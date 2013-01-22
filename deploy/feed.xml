@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Rodolfo Carvajal</title>
+    <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/feed" rel="self" />
+    <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/" />
+    <updated>2013-01-19T17:10:42+08:00</updated>
+    <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/</id>
+    <entry>
+        <title type="html"><![CDATA[Primer post]]></title>
+        <author><name>Rodolfo</name></author>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2013/hello-world"/>
+        <published>2013-01-19T17:10:00+08:00</published>
+        <updated>2013-01-19T17:10:42+08:00</updated>
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2013/hello-world</id>
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+            <![CDATA[ <p>Hola amigos!</p>
+]]>
+        </content>
+    </entry>
+</feed>
