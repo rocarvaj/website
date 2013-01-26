@@ -18,7 +18,7 @@ config = {
     "static": "deploy/static",
     "static_prefix": "/static/",
     "permalink": "{{date.year}}/{{filename}}",
-    "relative_url": True,
+    "relative_url": False,
     "perpage": 30,
     "feedcount": 20,
     "timezone": "+08:00",
@@ -58,7 +58,7 @@ writer = {
     ],
     "vars": {
         # uncomment if you want to reset archive page
-        # "archive_output": "archive.html",
+         "archive_output": "archive.html",
     }
 }
 
@@ -72,9 +72,9 @@ theme = {
     "vars": {
             'navigation': [
                     {'name': '@work', 'link': '/work/'},
-                    {'name': '@life', 'link': '/life/'},
+                    {'name': '@life', 'link': 'life/'},
                     ],
-        "disqus": "rocarvaj",
+        #"disqus": "rocarvaj",
         #"analytics": "UA-21475122-1",
         'elsewhere': [
                 {'name': 'Twitter', 'link': 'http://twitter.com/rocarvaj'},
