@@ -3,7 +3,7 @@
     <title>Rodolfo Carvajal</title>
     <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/feed" rel="self" />
     <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/" />
-    <updated>2013-01-26T15:48:47+08:00</updated>
+    <updated>2013-01-28T16:48:24+08:00</updated>
     <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/</id>
     <entry>
         <title type="html"><![CDATA[Primer post]]></title>
@@ -14,6 +14,48 @@
         <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2013/hello-world</id>
         <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
             <![CDATA[ <p>Hola amigos!</p>
+]]>
+        </content>
+    </entry><entry>
+        <title type="html"><![CDATA[Submitting multiple jobs in Condor]]></title>
+        <author><name>Rodolfo</name></author>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/120923-0636_submitting-multiple-jobs-in-condor"/>
+        <published>2012-09-23T07:37:00+08:00</published>
+        <updated>2013-01-28T16:48:24+08:00</updated>
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/120923-0636_submitting-multiple-jobs-in-condor</id>
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/tips/" term="tips" label="tips" />
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/computing/" term="computing" label="computing" />
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+            <![CDATA[ <p>A usual problem when running jobs in a cluster through the <a href="http://research.cs.wisc.edu/condor/">Condor</a> job scheduler, is that it doesn&#39;t provide very flexible script-like functionality. In this post I propose a way to deal with a particular situation: Submitting a bunch of jobs with different arguments, in a batch.</p>
+<p>This post assumes some familiarity with Condor. But I can tell you the short version: In Condor you create a &ldquo;submitting&rdquo; file (usually with extension .cmd) that looks something like this</p>
+
+<pre><code>universe = vanilla
+executable = /path/to/my/executable
+arguments = arg1 arg2 arg3
+queue</code></pre>
+<p>Then, you submit this job to Condor with the command <code>condor_submit &lt;nameOfCMDFile&gt;</code>.</p>
+<p>One way in which you can submit multiple jobs, is to change the arguments in the .cmd file and &ldquo;queue&rdquo; again:</p>
+
+<pre><code>universe = vanilla
+executable = /path/to/my/executable
+arguments = arg1 arg2 arg3
+queue
+arguments = newArg1 newArg2 newArg3
+queue
+...</code></pre>
+<p>This approach is not very elegant, specially if you have to submit 100 different jobs and they could change from time to time.</p>
+<p>Another way of doing this is by using bash scripts. I use two script files (download them <a href="https://gist.github.com/3770119">here</a>) to:</p>
+
+<ol>
+<li>Generate multiple .cmd files, one for each instance (or argument) in an input file (<code>CMDMaker.sh</code>).</li>
+<li>Submit the generated files to Condor, in a batch (<code>multiSubmit.sh</code>).</li>
+</ol>
+<p>The files have comments with instructions. You may need to make these files executable after download, by using these commands in your terminal:</p>
+
+<pre><code>chmod +x CMDMaker.sh
+chmod +x multiSubmit.sh</code></pre>
+<p>Enjoy!</p>
+<p><strong>Note:</strong> I&#39;m pretty sure I got the idea for this solution from someone in the web. I&#39;ll try to find the reference to give proper credit.</p>
 ]]>
         </content>
     </entry>

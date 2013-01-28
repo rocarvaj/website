@@ -72,7 +72,7 @@ theme = {
     "vars": {
             'navigation': [
                     {'name': '@work', 'link': '/work/'},
-                    {'name': '@life', 'link': 'life/'},
+                    {'name': '@life', 'link': '/life/'},
                     ],
         #"disqus": "rocarvaj",
         #"analytics": "UA-21475122-1",
