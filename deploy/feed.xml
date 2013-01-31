@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Rodolfo Carvajal</title>
-    <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/feed" rel="self" />
-    <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/" />
+    <link href="http://www2.isye.gatech.edu/~rcarvajal3/feed" rel="self" />
+    <link href="http://www2.isye.gatech.edu/~rcarvajal3/" />
     <updated>2013-01-30T20:02:22-05:00</updated>
-    <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/</id>
+    <id>http://www2.isye.gatech.edu/~rcarvajal3/</id>
     <entry>
         <title type="html"><![CDATA[Is more information better?]]></title>
         <author><name>Rodolfo Carvajal</name></author>
-        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-12-24_effect-of-information"/>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-12-24_effect-of-information"/>
         <published>2012-12-24T12:18:00-05:00</published>
         <updated>2013-01-30T19:55:24-05:00</updated>
-        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-12-24_effect-of-information</id>
-        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/cplex/" term="cplex" label="cplex" />
-        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/milp/" term="MILP" label="MILP" />
-        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-12-24_effect-of-information</id>
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/tag/cplex/" term="cplex" label="cplex" />
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/tag/milp/" term="MILP" label="MILP" />
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/" xml:lang="en">
             <![CDATA[ <p>A while ago I experienced a behaviour in CPLEX that I thought it was strange, or at least counterintuitive: Solving a Mixed Integer Linear Problem (MILP) when knowing in advance the optimal solution would in cases be (a lot) harder than just starting from scratch. How could it be that having more information would hurt the performance of a MILP solver? 
 So, I decided to perform a small computational study[^1], exploring the effect of providing primal information to a MIP solver in its performance.</p>
 
@@ -72,13 +72,13 @@ in 2457.11 seconds and exploring 1933920 nodes. This represents a <em>detriment<
     </entry><entry>
         <title type="html"><![CDATA[Submitting multiple jobs in Condor]]></title>
         <author><name>Rodolfo Carvajal</name></author>
-        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/120923-0636_submitting-multiple-jobs-in-condor"/>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/2012/120923-0636_submitting-multiple-jobs-in-condor"/>
         <published>2012-09-23T07:37:00-05:00</published>
         <updated>2013-01-30T19:31:03-05:00</updated>
-        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/120923-0636_submitting-multiple-jobs-in-condor</id>
-        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/tips/" term="tips" label="tips" />
-        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/computing/" term="computing" label="computing" />
-        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/2012/120923-0636_submitting-multiple-jobs-in-condor</id>
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/tag/tips/" term="tips" label="tips" />
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/tag/computing/" term="computing" label="computing" />
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/" xml:lang="en">
             <![CDATA[ <p>A usual problem when running jobs in a cluster through the <a href="http://research.cs.wisc.edu/condor/">Condor</a> job scheduler, is that it doesn&#39;t provide very flexible script-like functionality. In this post I propose a way to deal with a particular situation: Submitting a bunch of jobs with different arguments, in a batch.</p>
 <p>This post assumes some familiarity with Condor. But I can tell you the short version: In Condor you create a &ldquo;submitting&rdquo; file (usually with extension .cmd) that looks something like this</p>
 
@@ -114,13 +114,13 @@ chmod +x multiSubmit.sh</code></pre>
     </entry><entry>
         <title type="html"><![CDATA[Chile and Notebooks]]></title>
         <author><name>Rodolfo Carvajal</name></author>
-        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-08-23-notebooks"/>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-08-23-notebooks"/>
         <published>2012-08-26T00:00:00-05:00</published>
         <updated>2013-01-30T19:59:52-05:00</updated>
-        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-08-23-notebooks</id>
-        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/stuff/" term="stuff" label="stuff" />
-        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/travel/" term="travel" label="travel" />
-        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-08-23-notebooks</id>
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/tag/stuff/" term="stuff" label="stuff" />
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/tag/travel/" term="travel" label="travel" />
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/" xml:lang="en">
             <![CDATA[ <p>We just visited Chile for a few weeks. It was a very emotional trip, we faced a lot of
 things we had only heard and saw of in a computer screen. At the end we had mixed
 feelings: Our physical home is here, but our emotional home is back there.</p>
@@ -137,13 +137,13 @@ the design and the price tag (around $8.00).</p>
     </entry><entry>
         <title type="html"><![CDATA[A few useful Google Chrome extensions]]></title>
         <author><name>Rodolfo Carvajal</name></author>
-        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-06-07-afewusefulextensions"/>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-06-07-afewusefulextensions"/>
         <published>2012-06-07T00:00:00-05:00</published>
         <updated>2013-01-30T19:58:06-05:00</updated>
-        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-06-07-afewusefulextensions</id>
-        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/tips/" term="tips" label="tips" />
-        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/tools/" term="tools" label="tools" />
-        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-06-07-afewusefulextensions</id>
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/tag/tips/" term="tips" label="tips" />
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/tag/tools/" term="tools" label="tools" />
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/" xml:lang="en">
             <![CDATA[ <p>Here is a list of a few Google Chrome extensions that I find useful.
 I&#39;ve tried not to do what I did back in the day when I used Mozilla
 Firefox: Install all kinds of extensions without actually keeping track of which ones I would really use.</p>
@@ -176,11 +176,11 @@ is the closest thing so far.</p></li>
     </entry><entry>
         <title type="html"><![CDATA[Marcha de gigantes]]></title>
         <author><name>Rodolfo Carvajal</name></author>
-        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-marchadegigantes"/>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-marchadegigantes"/>
         <published>2012-06-03T00:00:00-05:00</published>
         <updated>2013-01-30T20:00:57-05:00</updated>
-        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-marchadegigantes</id>
-        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-marchadegigantes</id>
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/" xml:lang="en">
             <![CDATA[ <p>Recuerdo que viajábamos con mi papá. Desde Tocopilla hasta Chuqui, los dos solos. No teníamos mucho que decirnos, o quizás nada que decirnos. Mi papá apuntó las enormes torres de alta tensión que cruzaban el desierto y me dijo que algún día les iba a sacar una foto, y que la iba a titular: Marcha de gigantes.</p>
 <p>Un <a href="http://www.mixcloud.com/HeadphoneCommute/simon-scott-headphone-commute-mix/">mix</a>.</p>
 ]]>
@@ -188,11 +188,11 @@ is the closest thing so far.</p></li>
     </entry><entry>
         <title type="html"><![CDATA[60 ways, 100 days]]></title>
         <author><name>Rodolfo Carvajal</name></author>
-        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-60ways100days"/>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-60ways100days"/>
         <published>2012-04-03T20:14:00-05:00</published>
         <updated>2013-01-30T20:02:22-05:00</updated>
-        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-60ways100days</id>
-        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/2012/2012-60ways100days</id>
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/" xml:lang="en">
             <![CDATA[ <p>Here goes a not-so-exciting post. I just want to keep a more regular
 writing routine. I just have two things to talk about.</p>
 <p>The first one is not very new, but every once in a while I run into <a href="http://rdd.me/ekzmcy7d">this post</a>.
