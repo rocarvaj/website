@@ -3,25 +3,78 @@
     <title>Rodolfo Carvajal</title>
     <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/feed" rel="self" />
     <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/" />
-    <updated>2013-01-28T16:48:24+08:00</updated>
+    <updated>2013-01-30T20:02:22-05:00</updated>
     <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/</id>
     <entry>
-        <title type="html"><![CDATA[Primer post]]></title>
-        <author><name>Rodolfo</name></author>
-        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2013/hello-world"/>
-        <published>2013-01-19T17:10:00+08:00</published>
-        <updated>2013-01-26T15:48:47+08:00</updated>
-        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2013/hello-world</id>
+        <title type="html"><![CDATA[Is more information better?]]></title>
+        <author><name>Rodolfo Carvajal</name></author>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-12-24_effect-of-information"/>
+        <published>2012-12-24T12:18:00-05:00</published>
+        <updated>2013-01-30T19:55:24-05:00</updated>
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-12-24_effect-of-information</id>
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/cplex/" term="cplex" label="cplex" />
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/milp/" term="MILP" label="MILP" />
         <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
-            <![CDATA[ <p>Hola amigos!</p>
+            <![CDATA[ <p>A while ago I experienced a behaviour in CPLEX that I thought it was strange, or at least counterintuitive: Solving a Mixed Integer Linear Problem (MILP) when knowing in advance the optimal solution would in cases be (a lot) harder than just starting from scratch. How could it be that having more information would hurt the performance of a MILP solver? 
+So, I decided to perform a small computational study[^1], exploring the effect of providing primal information to a MIP solver in its performance.</p>
+
+<h1 id="toc_0">The experiment</h1>
+<p>Given a MILP instance:</p>
+
+<ol>
+<li>We solve it for five hours (wall-clock time) with a MILP solver.</li>
+<li>Solve the instance for five hours again, but this time giving the solution found in 1. as a MIP start to the MILP solver.</li>
+</ol>
+
+<h1 id="toc_1">Experimental setting</h1>
+<p>CPLEX 12.4<a href="with%208%20threads">^2</a> was used as the MILP solver.
+We use instances from the <em>Benchmark</em> class in MIPLIB 2010[^3], removing infeasible instances. Instance <code>bnatt350.mps.gz</code>
+was removed because CPLEX could not find any feasible solutions within the five-hour limit. This leaves us with 83 instances.</p>
+
+<h1 id="toc_2">Results</h1>
+<p>Out of the 83 instances, two of them were not solved to optimality in none of the two
+runs (<code>n3div36.mps.gz</code> and <code>m100n500k4r1.mps.gz</code>), and the instance <code>n3seq24.mps.gz</code>
+was not solved to optimality by CPLEX + MIP Start.</p>
+<p>Table 1 presents geometric means for time and number of
+branch-and-bound nodes required by each configuration (Default CPLEX and
+Default CPLEX + MIP Start) to prove optimality, computed
+over the 81 instances solved to optimality by both configurations. We have divided
+the instances in three classes, according to the maximum number of
+branch-and-bound nodes that it took for the two configurations to solve
+to optimality: 0 to 5999 nodes (class 1), 6000 to 59999 nodes class 2, and 60000 nodes and up (class 3). The row <em>improvement</em> indicates the relative improvement (or detriment) of the geometric mean with respect to Default CPLEX.</p>
+<p><img src="/work/2012/images/Table1_effect-of-information.png" alt="Table 1"/></p>
+<p>As we can see, the effect of providing this type of primal information to the solver
+is valuable in terms of time and branch-and-bound nodes, consistently for the
+three instance classes. The benefits of providing the information seem to
+decrease when the difficulty of the instances increases (from class 1 to class 3).</p>
+
+<h2 id="toc_3">But is not all good&hellip;</h2>
+<p>An important observation is that there exists instances in which providing
+the optimal solution as information <em>a priori</em> can actually be harmful for
+the performance of the solver. Two notorious examples are:</p>
+
+<ul>
+<li>Instance <code>n3seq24.mps.gz</code>, solved by default CPLEX in 876.80 seconds and exploring 35999 nodes, but proved to be within 0.38% of the
+optimal value by default CPLEX + MIP Start in 18000 seconds and exploring 616345 nodes.</li>
+<li>Instance <code>enlight13.mps.gz</code>, solved by default CPLEX in 57.53 seconds and exploring 54753 nodes, but solved by default CPLEX + MIP Start
+in 2457.11 seconds and exploring 1933920 nodes. This represents a <em>detriment</em> of 4171.01% in time and 3432.02% in nodes!</li>
+</ul>
+<p>To get an idea of how bad this is in the case of <code>enlight13.mps.gz</code>, below are plots for the behaviour of the best feasible solution found and best lower bound, in terms of the number of branch-and-bound nodes explored, for both Default CPLEX and Default CPLEX + MIP Start.</p>
+<p><img src="/work/2012/images/enlight13_defaultCPLEX.png" alt="Default CPLEX"/></p>
+<p><img src="/work/2012/images/enlight13_wMIPStart.png" alt="Default CPLEX + MIP Start"/></p>
+<p>One argument that could be made is that in the case where CPLEX knows the optimal solution in advance, it expends a lot of time in heiristics that do not report any benefits. This could explain the detriment in time, but not in branch-and-bound nodes. Somehow, knowing the optimal solution changes the search tree in very mean ways.</p>
+<p>That&#39;s it for now. Happy holidays!</p>
+<p><strong>Edit:</strong> Jean Francois Puget posted a nice response to this article <a href="https://www.ibm.com/developerworks/mydeveloperworks/blogs/jfp/entry/knowing_the_optimum_helps_a_bit9?lang=en">here</a>.</p>
+<p>[^1]: This work is part of ongoing research with <a href="http://www2.isye.gatech.edu/%7Egnemhaus/">G. Nemhauser</a> and <a href="http://www2.isye.gatech.edu/%7Esahmed/">S. Ahmed</a>.</p>
+<p>[^3]: Koch, Thorsten, et al. &ldquo;MIPLIB 2010.&rdquo; <em>Mathematical Programming Computation</em> 3.2 (2011): 103-163.</p>
 ]]>
         </content>
     </entry><entry>
         <title type="html"><![CDATA[Submitting multiple jobs in Condor]]></title>
-        <author><name>Rodolfo</name></author>
+        <author><name>Rodolfo Carvajal</name></author>
         <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/120923-0636_submitting-multiple-jobs-in-condor"/>
-        <published>2012-09-23T07:37:00+08:00</published>
-        <updated>2013-01-28T16:48:24+08:00</updated>
+        <published>2012-09-23T07:37:00-05:00</published>
+        <updated>2013-01-30T19:31:03-05:00</updated>
         <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/120923-0636_submitting-multiple-jobs-in-condor</id>
         <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/tips/" term="tips" label="tips" />
         <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/computing/" term="computing" label="computing" />
@@ -56,6 +109,101 @@ queue
 chmod +x multiSubmit.sh</code></pre>
 <p>Enjoy!</p>
 <p><strong>Note:</strong> I&#39;m pretty sure I got the idea for this solution from someone in the web. I&#39;ll try to find the reference to give proper credit.</p>
+]]>
+        </content>
+    </entry><entry>
+        <title type="html"><![CDATA[Chile and Notebooks]]></title>
+        <author><name>Rodolfo Carvajal</name></author>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-08-23-notebooks"/>
+        <published>2012-08-26T00:00:00-05:00</published>
+        <updated>2013-01-30T19:59:52-05:00</updated>
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-08-23-notebooks</id>
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/stuff/" term="stuff" label="stuff" />
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/travel/" term="travel" label="travel" />
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+            <![CDATA[ <p>We just visited Chile for a few weeks. It was a very emotional trip, we faced a lot of
+things we had only heard and saw of in a computer screen. At the end we had mixed
+feelings: Our physical home is here, but our emotional home is back there.</p>
+<p>A nice surprise, that I already had in my last visit, is to find that <a href="http://www.casaideas.com/">CasaIdeas</a>
+is selling a lot of beautiful and cheap notebooks and paper-related products. Actually my wife gave
+me this nice <a href="http://www.casaideas.com/catalogo/index.php/cl/papeleria/cuadernos-y-libretas/folder-viaje.html">folder+notebook</a>, which I think is going to be my new note-taking tool.</p>
+<p><img src="https://dl.dropbox.com/u/356769/Pics/2012-08-26%2011.37.23.jpg" alt="Notebook"/></p>
+<p>I love it, since it has a pen holder and plenty of storage space for receipts, cards, and other stuff.
+I know that you can probably find very similar and fancier products in the market, but I was pleased with
+the design and the price tag (around $8.00).</p>
+<p>That&#39;s it for now.</p>
+]]>
+        </content>
+    </entry><entry>
+        <title type="html"><![CDATA[A few useful Google Chrome extensions]]></title>
+        <author><name>Rodolfo Carvajal</name></author>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-06-07-afewusefulextensions"/>
+        <published>2012-06-07T00:00:00-05:00</published>
+        <updated>2013-01-30T19:58:06-05:00</updated>
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-06-07-afewusefulextensions</id>
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/tips/" term="tips" label="tips" />
+        <category scheme="http://www2.isye.gatech.edu/~rcarvajal3/deploy/tag/tools/" term="tools" label="tools" />
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+            <![CDATA[ <p>Here is a list of a few Google Chrome extensions that I find useful.
+I&#39;ve tried not to do what I did back in the day when I used Mozilla
+Firefox: Install all kinds of extensions without actually keeping track of which ones I would really use.</p>
+
+<ul>
+<li><p><a href="https://chrome.google.com/webstore/detail/mgijmajocgfcbeboacabfgobmjgjcoja">Google dictionary</a>.
+It is not just a link to Googling &ldquo;define <my-word>&rdquo;, you can double click over a word and a nice pop-up comes out with
+the definition and a link to search Google for the term.</p></li>
+<li><p><a href="https://chrome.google.com/webstore/detail/oknpjjbmpnndlpmnhmekjpocelpnlfdi">Readability</a>.
+I would love it if the whole internet could be first processed with Readability, it is a tool to convert web pages into
+a more readable format. Nowadays is very hard for me to read a blog/article without using it. The Chrome extension
+allows you to read the current page in Readability, or save it for later.</p></li>
+<li><p><a href="https://chrome.google.com/webstore/detail/hoihofapbdnldlhecnhefifbcddgdkhm">Clock</a>.
+This little extension comes installed in Chrome. Very simple, but with enough functions: Alarm, timer (for <a href="http://stumptowncoffee.com/guide/press-pot/">brewing your perfect
+cup of coffee in a french press</a>), stopwatch, etc.</p></li>
+<li><p><a href="https://chrome.google.com/webstore/detail/bbehjmjchoiaglkeboicbgkpfafcmhij">Writebox</a>. An offline editor for <a href="www.dropbox.com">Dropbox</a>.
+I really don&#39;t know why Dropbox does not have its own web-based text editor, I&#39;ve read that maybe is because Dropbox&#39;s main concern is syncing and users can develop tools to play with it.</p></li>
+<li><p><a href="https://chrome.google.com/webstore/detail/kjebfhglflhjjjiceimfkgicifkhjlnm">Scratchpad</a>. I&#39;m a big fan of Google Docs, but
+I would love to be able to edit a text document in a very minimal editor. Scratchpad allows you to do this, giving you offline support.
+But, to be honest, lately the syncing hasn&#39;t been working very well. Also for some reason it does not allow me to paste text in plain-text
+format. That&#39;s why lately I&#39;ve been managing my notes with&hellip;</p></li>
+<li><p><a href="https://chrome.google.com/webstore/detail/pondcljgicihhdfcnlflkikegfbnalmp">Catch</a>. This is a dead-simple extension, to collect notes
+to <a href="www.catch.com">Catch.com</a>. Catch.com is a simple note taking service, way simpler than <a href="www.evernote.com">Evernote</a> and
+<a href="www.springpad.com">Springpad</a> (and actually that&#39;s something I like about it). I&#39;m a widower of the great Google Notebook, and Catch.com
+is the closest thing so far.</p></li>
+</ul>
+<p>That&#39;s it! Let me know if you have some other good extensions to recommend.</p>
+]]>
+        </content>
+    </entry><entry>
+        <title type="html"><![CDATA[Marcha de gigantes]]></title>
+        <author><name>Rodolfo Carvajal</name></author>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-marchadegigantes"/>
+        <published>2012-06-03T00:00:00-05:00</published>
+        <updated>2013-01-30T20:00:57-05:00</updated>
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-marchadegigantes</id>
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+            <![CDATA[ <p>Recuerdo que viajábamos con mi papá. Desde Tocopilla hasta Chuqui, los dos solos. No teníamos mucho que decirnos, o quizás nada que decirnos. Mi papá apuntó las enormes torres de alta tensión que cruzaban el desierto y me dijo que algún día les iba a sacar una foto, y que la iba a titular: Marcha de gigantes.</p>
+<p>Un <a href="http://www.mixcloud.com/HeadphoneCommute/simon-scott-headphone-commute-mix/">mix</a>.</p>
+]]>
+        </content>
+    </entry><entry>
+        <title type="html"><![CDATA[60 ways, 100 days]]></title>
+        <author><name>Rodolfo Carvajal</name></author>
+        <link href="http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-60ways100days"/>
+        <published>2012-04-03T20:14:00-05:00</published>
+        <updated>2013-01-30T20:02:22-05:00</updated>
+        <id>http://www2.isye.gatech.edu/~rcarvajal3/deploy/2012/2012-60ways100days</id>
+        <content type="html" xml:base="http://www2.isye.gatech.edu/~rcarvajal3/deploy" xml:lang="en">
+            <![CDATA[ <p>Here goes a not-so-exciting post. I just want to keep a more regular
+writing routine. I just have two things to talk about.</p>
+<p>The first one is not very new, but every once in a while I run into <a href="http://rdd.me/ekzmcy7d">this post</a>.
+Is a very inspirational post about small things you can do to improve your
+life. It is probably hard to follow all of them, but at least you can get
+good ideas.</p>
+<p>The second one is that my wife is finally on <a href="http://pinterest.com">Pinterest</a>,
+so I started to visit it too. I remember that when I joined it, there were too
+much women stuff (not that I don&#39;t like women stuff&hellip; It was just too much). Now
+things are a bit more balanced. An example: <a href="http://pinterest.com/search/?q=notebooks">Notebook porn</a>.</p>
+<p>Oh!, and should probably say: <a href="http://pinterest.com/rocarvaj/">Follow me on Pinterest</a>.</p>
 ]]>
         </content>
     </entry>

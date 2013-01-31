@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Is more information better? - Rodolfo Carvajal</title>
+        <script>if (top !== self) top.location = self.location;</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/static/style.css?v=49227" />
+        <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
+        
+        <link rel="alternate" type="application/rss+xml" href="/feed" title="Rodolfo Carvajal" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
+        <![endif]-->
+        
+        
+<link rel="canonical" href="/2012-12-24_effect-of-information" />
+
+
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Rodolfo Carvajal</a></h1>
+            <nav id="nav" role="navigation">
+                
+                <a href="/work/">@work</a>
+                <a href="/life/">@life</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container">
+<div class="hentry">
+    <h1 class="entry-title">Is more information better?</h1>
+    <div class="entry-content">
+        <p>A while ago I experienced a behaviour in CPLEX that I thought it was strange, or at least counterintuitive: Solving a Mixed Integer Linear Problem (MILP) when knowing in advance the optimal solution would in cases be (a lot) harder than just starting from scratch. How could it be that having more information would hurt the performance of a MILP solver? 
+So, I decided to perform a small computational study[^1], exploring the effect of providing primal information to a MIP solver in its performance.</p>
+
+<h1 id="toc_0">The experiment</h1>
+<p>Given a MILP instance:</p>
+
+<ol>
+<li>We solve it for five hours (wall-clock time) with a MILP solver.</li>
+<li>Solve the instance for five hours again, but this time giving the solution found in 1. as a MIP start to the MILP solver.</li>
+</ol>
+
+<h1 id="toc_1">Experimental setting</h1>
+<p>CPLEX 12.4<a href="with%208%20threads">^2</a> was used as the MILP solver.
+We use instances from the <em>Benchmark</em> class in MIPLIB 2010[^3], removing infeasible instances. Instance <code>bnatt350.mps.gz</code>
+was removed because CPLEX could not find any feasible solutions within the five-hour limit. This leaves us with 83 instances.</p>
+
+<h1 id="toc_2">Results</h1>
+<p>Out of the 83 instances, two of them were not solved to optimality in none of the two
+runs (<code>n3div36.mps.gz</code> and <code>m100n500k4r1.mps.gz</code>), and the instance <code>n3seq24.mps.gz</code>
+was not solved to optimality by CPLEX + MIP Start.</p>
+<p>Table 1 presents geometric means for time and number of
+branch-and-bound nodes required by each configuration (Default CPLEX and
+Default CPLEX + MIP Start) to prove optimality, computed
+over the 81 instances solved to optimality by both configurations. We have divided
+the instances in three classes, according to the maximum number of
+branch-and-bound nodes that it took for the two configurations to solve
+to optimality: 0 to 5999 nodes (class 1), 6000 to 59999 nodes class 2, and 60000 nodes and up (class 3). The row <em>improvement</em> indicates the relative improvement (or detriment) of the geometric mean with respect to Default CPLEX.</p>
+<p><img src="images/Table1_effect-of-information.png" alt="Table 1"/></p>
+<p>As we can see, the effect of providing this type of primal information to the solver
+is valuable in terms of time and branch-and-bound nodes, consistently for the
+three instance classes. The benefits of providing the information seem to
+decrease when the difficulty of the instances increases (from class 1 to class 3).</p>
+
+<h2 id="toc_3">But is not all good&hellip;</h2>
+<p>An important observation is that there exists instances in which providing
+the optimal solution as information <em>a priori</em> can actually be harmful for
+the performance of the solver. Two notorious examples are:</p>
+
+<ul>
+<li>Instance <code>n3seq24.mps.gz</code>, solved by default CPLEX in 876.80 seconds and exploring 35999 nodes, but proved to be within 0.38% of the
+optimal value by default CPLEX + MIP Start in 18000 seconds and exploring 616345 nodes.</li>
+<li>Instance <code>enlight13.mps.gz</code>, solved by default CPLEX in 57.53 seconds and exploring 54753 nodes, but solved by default CPLEX + MIP Start
+in 2457.11 seconds and exploring 1933920 nodes. This represents a <em>detriment</em> of 4171.01% in time and 3432.02% in nodes!</li>
+</ul>
+<p>To get an idea of how bad this is in the case of <code>enlight13.mps.gz</code>, below are plots for the behaviour of the best feasible solution found and best lower bound, in terms of the number of branch-and-bound nodes explored, for both Default CPLEX and Default CPLEX + MIP Start.</p>
+<p><img src="images/enlight13_defaultCPLEX.png" alt="Default CPLEX"/></p>
+<p><img src="imagess/enlight13_wMIPStart.png" alt="Default CPLEX + MIP Start"/></p>
+<p>One argument that could be made is that in the case where CPLEX knows the optimal solution in advance, it expends a lot of time in heiristics that do not report any benefits. This could explain the detriment in time, but not in branch-and-bound nodes. Somehow, knowing the optimal solution changes the search tree in very mean ways.</p>
+<p>That&#39;s it for now. Happy holidays!</p>
+<p><strong>Edit:</strong> Jean Francois Puget posted a nice response to this article <a href="https://www.ibm.com/developerworks/mydeveloperworks/blogs/jfp/entry/knowing_the_optimum_helps_a_bit9?lang=en">here</a>.</p>
+<p>[^1]: This work is part of ongoing research with <a href="http://www2.isye.gatech.edu/%7Egnemhaus/">G. Nemhauser</a> and <a href="http://www2.isye.gatech.edu/%7Esahmed/">S. Ahmed</a>.</p>
+<p>[^3]: Koch, Thorsten, et al. &ldquo;MIPLIB 2010.&rdquo; <em>Mathematical Programming Computation</em> 3.2 (2011): 103-163.</p>
+
+    </div>
+</div>
+</div>
+        </div>
+
+        <footer id="footer">
+            <hr class="end" />
+            <nav class="elsewhere">
+                <a href="http://twitter.com/rocarvaj">Twitter</a>
+            </nav>
+            <p class="copyright">
+            <span class="software">
+                Powered by <a href="http://lab.lepture.com/liquidluck/">Felix Felicis</a> 3.7,
+            </span>
+            <span class="theme">
+                Theme <a href="https://github.com/lepture/liquidluck-theme-moment" rel="nofollow">moment</a> 2.0 by <a href="http://lepture.com">Hsiaoming Yang</a>
+            </span>
+            </p>
+        </footer>
+        <script type="text/javascript" src="/static/mobile.js?v=3b6df"></script>
+        
+    </body>
+</html>

@@ -21,12 +21,12 @@ config = {
     "relative_url": False,
     "perpage": 30,
     "feedcount": 20,
-    "timezone": "+08:00",
+    "timezone": "-05:00",
 }
 
 
 author = {
-    "default": "Rodolfo",
+    "default": "Rodolfo Carvajal",
     "vars": {}
 }
 
@@ -71,8 +71,9 @@ theme = {
     # for instance: {{theme.disqus}}
     "vars": {
             'navigation': [
-                    {'name': '@work', 'link': '/work/'},
-                    {'name': '@life', 'link': '/life/'},
+                    {'name': 'Work', 'link': '/work/'},
+                    {'name': 'Life', 'link': '/life/'},
+                    {'name': 'About', 'link': '/about.html'},
                     ],
         #"disqus": "rocarvaj",
         #"analytics": "UA-21475122-1",
