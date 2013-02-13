@@ -71,8 +71,10 @@ theme = {
     # for instance: {{theme.disqus}}
     "vars": {
             "navigation": [
-				{'title': "Log:Work", 'link': '/~rcarvajal3/work/'},
-				{'title': "Log:Life", 'link': '/~rcarvajal3/life/'},
+				{'title': "Home", 'link': '/~rcarvajal3/'},
+				{'title': "Log", 'link': '/~rcarvajal3/archive.html'},
+				{'title': "Life", 'link': '/~rcarvajal3/life/'},
+				{'title': "Work", 'link': '/~rcarvajal3/work/'},
                     {'title': "About", 'link': '/~rcarvajal3/about.html'},
                     ],
         #"disqus": "rocarvaj",
