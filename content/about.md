@@ -52,9 +52,7 @@ You can also check my [Google Scholar profile](http://scholar.google.com/citatio
 
 [sochedi07]: http://www2.isye.gatech.edu/~rcarvajal3/material/research/sochedi07.pdf
 [mfcs07]: http://www.springerlink.com/content/k28384113576g382/
-[mfcs07_pdf]: http://www2.isye.getech.edu/~rcarvajal3/material/research/small_fcs07.pdf
+[mfcs07_pdf]: http://www2.isye.gatech.edu/~rcarvajal3/material/research/small_mfcs07.pdf
 [comunidades06]: http://www.cybertesis.cl/tesis/uchile/2006/carvajal_r/html/index-frames.html
 [bohemario95]: http://books.google.com/books?id=u60_UxhzWZ8C
-[oldGrowth_pdf]: http://www2.isye.gatech.edu/~rcarvajal3/material/research/oldgrowth_120626_Submitted.pdf
-
-*Made using [Markdown](http://daringfireball.net/projects/markdown/).*
+[oldGrowth_pdf]: http://www2.isye.gatech.edu/~rcarvajal3/material/research/oldgrowth_121017.pdf

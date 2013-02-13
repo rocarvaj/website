@@ -6,7 +6,7 @@
 #: for instance: {{site.name}}
 site = {
     "name": "Rodolfo Carvajal",  # your site name
-    "url": "http://www2.isye.gatech.edu/~rcarvajal3/deploy",  # your site url
+    "url": "http://www2.isye.gatech.edu/~rcarvajal3/",  # your site url
     # "prefix": "blog",
 }
 
@@ -14,11 +14,11 @@ site = {
 #: 1. where the resources  2. how should the site be generated
 config = {
     "source": "content",
-    "output": "deploy",
+    "output": "../public_html",
     "static": "deploy/static",
     "static_prefix": "/static/",
     "permalink": "{{date.year}}/{{filename}}",
-    "relative_url": False,
+    "relative_url": True,
     "perpage": 30,
     "feedcount": 20,
     "timezone": "-05:00",
@@ -53,7 +53,7 @@ writer = {
         "liquidluck.writers.core.YearWriter",
         "liquidluck.writers.core.CategoryWriter",
         # "liquidluck.writers.core.CategoryFeedWriter",
-        # "liquidluck.writers.core.TagWriter",
+        "liquidluck.writers.core.TagWriter",
         # "liquidluck.writers.core.TagCloudWriter",
     ],
     "vars": {
@@ -70,14 +70,15 @@ theme = {
     # you can access theme in template with ``theme`` namespace
     # for instance: {{theme.disqus}}
     "vars": {
-            'navigation': [
-                    {'name': 'Work', 'link': '/work/'},
-                    {'name': 'Life', 'link': '/life/'},
-                    {'name': 'About', 'link': '/about.html'},
+            "navigation": [
+				{'title': "Log:Work", 'link': '/~rcarvajal3/work/'},
+				{'title': "Log:Life", 'link': '/~rcarvajal3/life/'},
+                    {'title': "About", 'link': '/~rcarvajal3/about.html'},
                     ],
         #"disqus": "rocarvaj",
         #"analytics": "UA-21475122-1",
         'elsewhere': [
+			{'name': 'Google+', 'link': 'https://plus.google.com/u/0/105280383427274235902/about'},
                 {'name': 'Twitter', 'link': 'http://twitter.com/rocarvaj'},
                 ]
         }

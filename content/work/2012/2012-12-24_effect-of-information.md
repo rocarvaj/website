@@ -33,7 +33,7 @@ the instances in three classes, according to the maximum number of
 branch-and-bound nodes that it took for the two configurations to solve
 to optimality: 0 to 5999 nodes (class 1), 6000 to 59999 nodes class 2, and 60000 nodes and up (class 3). The row *improvement* indicates the relative improvement (or detriment) of the geometric mean with respect to Default CPLEX.
 
-![Table 1](/work/2012/images/Table1_effect-of-information.png)
+![Table 1](/~rcarvajal3/work/2012/images/Table1_effect-of-information.png)
 
 As we can see, the effect of providing this type of primal information to the solver
 is valuable in terms of time and branch-and-bound nodes, consistently for the
@@ -52,9 +52,9 @@ in 2457.11 seconds and exploring 1933920 nodes. This represents a *detriment* of
 
 To get an idea of how bad this is in the case of `enlight13.mps.gz`, below are plots for the behaviour of the best feasible solution found and best lower bound, in terms of the number of branch-and-bound nodes explored, for both Default CPLEX and Default CPLEX + MIP Start.
 
-![Default CPLEX](/work/2012/images/enlight13_defaultCPLEX.png)
+![Default CPLEX](/~rcarvajal3/work/2012/images/enlight13_defaultCPLEX.png)
 
-![Default CPLEX + MIP Start](/work/2012/images/enlight13_wMIPStart.png)
+![Default CPLEX + MIP Start](/~rcarvajal3/work/2012/images/enlight13_wMIPStart.png)
 
 One argument that could be made is that in the case where CPLEX knows the optimal solution in advance, it expends a lot of time in heiristics that do not report any benefits. This could explain the detriment in time, but not in branch-and-bound nodes. Somehow, knowing the optimal solution changes the search tree in very mean ways.
 
