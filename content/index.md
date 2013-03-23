@@ -3,6 +3,8 @@
 - template: index.html
 
 ---------
+![Photo by Lluis Munguia](portrait.jpg)
+<font size="1">Photo by Lluis Munguia</font>
 
 ## Who?
 
