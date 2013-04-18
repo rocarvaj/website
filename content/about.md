@@ -29,7 +29,7 @@ Ahmed](http://www2.isye.gatech.edu/~sahmed/), and [Prof. David Bader](http://www
 - [Bohemario][bohemario95], poems 1995.
 
 ### Submitted: ###
-- **Imposing Connectivity Constraints in Forest Planning Models.** [[pdf]][oldGrowth_pdf] With M. Constantino, M. Goycoolea, J. P. Vielma and A. Weintraub, 2011.
+- **Imposing Connectivity Constraints in Forest Planning Models.** [[pdf]][oldGrowth_pdf] With M. Constantino, M. Goycoolea, J. P. Vielma and A. Weintraub, 2011. **Accepted in Operations Research**.
 
 You can also check my [Google Scholar profile](http://scholar.google.com/citations?hl=en&user=O3DhVXMAAAAJ).
 

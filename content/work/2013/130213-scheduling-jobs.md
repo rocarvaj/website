@@ -2,7 +2,7 @@
 
 - date: 2013-02-13
 - tags: tips
-- category: work
+category: work
 
 -----
 
@@ -12,4 +12,4 @@ because it might have a negative effect in your priority in the queue, but you a
 spend the whole night sending jobs in batches.
 
 A solution is to use the Unix [`at`](http://unixhelp.ed.ac.uk/CGI/man-cgi?at) command. I'll
-just show an example, assume that you have a script `runner.sh` that 
+just show an example, assume that you have a script `runner.sh` that  
