@@ -38,7 +38,7 @@ You can also check my [Google Scholar profile](http://scholar.google.com/citatio
 - [Ars Combinatoria](http://www.combinatorialmath.ca/arscombinatoria/). 
 - [LATIN](http://www.latintcs.org/)
 
-### Colaborators and colleagues: ###
+### Collaborators and colleagues: ###
 [Marcos Goycoolea](http://mgoycool.uai.cl), 
 [Andr&eacute;s Weintraub](http://www.dii.uchile.cl/~aweintra/), 
 [Miguel Constantino](http://www.deio.fc.ul.pt/ficha_pessoal/ficha_miguel-constantino.php), 
