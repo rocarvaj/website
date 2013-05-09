@@ -23,13 +23,15 @@ currently working on exploring parallel approaches to solving Integer Programmin
 Ahmed](http://www2.isye.gatech.edu/~sahmed/), and [Prof. David Bader](http://www.cc.gatech.edu/~bader/).
 
 ### Publications: ###
-- [Una experiencia en la ense&ntilde;anza de los primeros cursos del &aacute;rea matem&aacute;tica][sochedi07]. With M. Matamala. XXI Congreso de Educaci&oacute;n en Ingenier&iacute;a SOCHEDI. 2007.
-- [Small Alliances in Graphs.][mfcs07] [[pdf]][mfcs07_pdf] With M. Matamala, I. Rapaport y N. Schabanel. MFCS 2007, LNCS, pp. 218-227. Springer, Berlin. 2007.
-- [Comunidades en grafos.][comunidades06] Engineering thesis. Advisor: I. Rapaport, co-advisor: M. Matamala. 2006.
-- [Bohemario][bohemario95], poems 1995.
+- *Imposing Connectivity Constraints in Forest Planning Models.* [[pdf]][oldGrowth_pdf] With M. Constantino, M. Goycoolea, J. P. Vielma and A. Weintraub, 2011. **To appear in Operations Research**.
+- [*Una experiencia en la ense&ntilde;anza de los primeros cursos del &aacute;rea matem&aacute;tica*][sochedi07]. With M. Matamala. XXI Congreso de Educaci&oacute;n en Ingenier&iacute;a SOCHEDI, 2007.
+- [*Small Alliances in Graphs.*][mfcs07] [[pdf]][mfcs07_pdf] With M. Matamala, I. Rapaport and N. Schabanel. MFCS 2007, LNCS, pp. 218-227. Springer, Berlin. 2007.
+- [*Comunidades en grafos.*][comunidades06] Engineering thesis. Advisor: I. Rapaport, co-advisor: M. Matamala, 2006.
+- [*Bohemario*][bohemario95], poems, 1995.
 
 ### Submitted: ###
-- **Imposing Connectivity Constraints in Forest Planning Models.** [[pdf]][oldGrowth_pdf] With M. Constantino, M. Goycoolea, J. P. Vielma and A. Weintraub, 2011. **Accepted in Operations Research**.
+- *Using diversification, communication and parallelism to solve mixed-integer linear programs.* With S. Ahmed. G. Nemhauser, K. Furman,
+V. Goel and Y. Shao, 2013.
 
 You can also check my [Google Scholar profile](http://scholar.google.com/citations?hl=en&user=O3DhVXMAAAAJ).
 
@@ -48,7 +50,8 @@ You can also check my [Google Scholar profile](http://scholar.google.com/citatio
 [Nicolas Schabanel](http://www.liafa.jussieu.fr/~nschaban/), 
 [Gustavo Angulo](http://www2.isye.gatech.edu/~giao3), 
 [Diego Mor&aacute;n](http://www2.isye.gatech.edu/~damr3), 
-[Crist&oacute;bal Guzm&aacute;n](http://www2.isye.gatech.edu/~cguzman6/Home.html). 
+[Crist&oacute;bal Guzm&aacute;n](http://www2.isye.gatech.edu/~cguzman6/Home.html),
+[Guido Lagos](http://www2.isye.gatech.edu/~grlb3/)
 
 [sochedi07]: http://www2.isye.gatech.edu/~rcarvajal3/material/research/sochedi07.pdf
 [mfcs07]: http://www.springerlink.com/content/k28384113576g382/
