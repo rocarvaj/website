@@ -17,4 +17,4 @@ ISyE - Georgia Tech. Go [here](http://www2.isye.gatech.edu/dos/) for more
 information about the seminars.
 
 Below you can find recent things I've written, they should mirror the
-posts in [here](http://scriptogr.am/rocarvaj).
+posts in [here](http://rocarvaj.calepin.co).
