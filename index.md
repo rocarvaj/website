@@ -19,7 +19,7 @@ Ahmed](http://www2.isye.gatech.edu/~sahmed/), and [Prof. David Bader](http://www
 
 ### Publications: ###
 - *Using diversification, communication and parallelism to solve mixed-integer linear programs.* With S. Ahmed. G. Nemhauser, K. Furman,
-V. Goel and Y. Shao, 2013. To appear in Operations Research Letters.
+V. Goel and Y. Shao, 2013. To appear in Operations Research Letters (`DOI:10.1016/j.orl.2013.12.012`).
 
 - [Imposing Connectivity Constraints in Forest Planning Models](http://or.journal.informs.org/content/early/2013/07/30/opre.2013.1183.abstract) With M. Constantino, M. Goycoolea, J. P. Vielma and A. Weintraub. Operations Research, 2013.
 - [*Una experiencia en la ense&ntilde;anza de los primeros cursos del &aacute;rea matem&aacute;tica*][sochedi07]. With M. Matamala. XXI Congreso de Educaci&oacute;n en Ingenier&iacute;a SOCHEDI, 2007.
